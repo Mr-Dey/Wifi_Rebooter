@@ -3,7 +3,8 @@ from selenium.webdriver.common.by import By
 import time
 
 driver=webdriver.Chrome()
-router_address="http://192.168.0.3/"
+router_address=input("Enter router gateway.\n")
+router_address=f"http://{router_address}/"
 
 password_user_id="userName"
 password_field_id="pcPassword"
