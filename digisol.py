@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 import time
 
 
@@ -7,7 +8,9 @@ def catch(html):
     with open("catch.html","w",encoding="utf-8") as catch:
         catch.write(html)
 
-driver=webdriver.Chrome()
+option=Options()
+option.add_argument("-headless")
+driver=webdriver.Chrome(options=option)
 driver.implicitly_wait(10)
 router_address="192.168.1.1"
 driver.get(f"http://{router_address}/")

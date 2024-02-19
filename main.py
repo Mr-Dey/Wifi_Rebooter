@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
 #to catch the page source if needed.
 def catch(html):
@@ -7,7 +8,9 @@ def catch(html):
         x.write(html)
         
 def my_tplink():
-    driver=webdriver.Chrome()
+    option=Options()
+    option.add_argument("-headless")
+    driver=webdriver.Chrome(options=option)
 
     #Confidential
     router_address="http://192.168.0.3/"
@@ -52,7 +55,9 @@ def my_tplink():
     print("Rebooting sucessfully")
 
 def digisol():
-    driver=webdriver.Chrome()
+    option=Options()
+    option.add_argument("-headless")
+    driver=webdriver.Chrome(options=option)
     driver.implicitly_wait(10)
     router_address="192.168.1.1"
     driver.get(f"http://{router_address}/")
