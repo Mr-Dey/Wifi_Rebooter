@@ -8,9 +8,6 @@ def catch(html):
         catch.write(html)
 
 driver=webdriver.Chrome()
-
-
-
 driver.implicitly_wait(10)
 router_address="192.168.1.1"
 driver.get(f"http://{router_address}/")

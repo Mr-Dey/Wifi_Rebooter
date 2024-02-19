@@ -51,5 +51,51 @@ def my_tplink():
     alart.accept()
     print("Rebooting sucessfully")
 
+def digisol():
+    driver=webdriver.Chrome()
+    driver.implicitly_wait(10)
+    router_address="192.168.1.1"
+    driver.get(f"http://{router_address}/")
+    try:
+        name_id=driver.find_element(By.ID,"username1")
+        password_id=driver.find_element(By.ID,"psd1")
+        button = driver.find_element(By.XPATH, "//input[@onclick='on_submit();']")
+        # management = driver.find_element(By.XPATH, "//input[@onclick='on_catolog(4);']")
 
-my_tplink()
+        unique_code_id=driver.find_element(By.ID,"check_code")
+        verification_code_id=driver.find_element(By.ID,"verification_code")
+        code=unique_code_id.get_attribute("value")
+
+        print(code)
+        name_id.send_keys("admin")
+        password_id.send_keys("admin12345")
+        verification_code_id.send_keys(code)
+        button.click()
+    except Exception as e:
+        print("already Logged in..")
+
+    driver.switch_to.frame("topFrame")
+    management=driver.find_element(By.XPATH,"//span[text()='Management']")
+    management.click()
+    device_manage=driver.find_element(By.XPATH,"//span[text()='Device Manage']")
+    device_manage.click()
+    driver.switch_to.parent_frame()
+    driver.switch_to.frame("mainFrame")
+    reboot_btn = driver.find_element(By.XPATH,"//input[@value='Commit and Reboot']")
+    reboot_btn.click()
+    print('Process digisol Complete!')
+
+
+def temp():
+    print("Will replace this code with parent router of home tp link")
+
+if __name__=="__main__":
+    func ={'0':my_tplink,'1':temp,'2':digisol}
+    userInp=input("""
+                  enter '0' for home
+                  enter '1' for home_parent
+                  enter '2' for office
+                  =>
+                  """)
+    func[userInp]()
+
