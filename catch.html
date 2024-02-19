@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <style>
+      #cntdwn {
+        border-color: white;
+        border-width: 0px;
+        font-size: 12pt;
+        color: red;
+        text-align: left;
+        font-weight: bold;
+        font-family: Courier;
+      }
+    </style>
+    <script language="javascript">
+      var h = 70;
+      function stop() {
+        clearTimeout(id);
+      }
+      function start() {
+        h--;
+        if (h >= 0) {
+          frm.time.value = h;
+          frm.textname.value = "Device Resetting, please wait ...";
+          id = setTimeout("start()", 1000);
+        }
+        if (h == 0) {
+          window.location.reload(true);
+        }
+      }
+    </script>
+  </head>
+  <body bgcolor="white" onload="start();" onunload="stop();">
+    <blockquote>
+      <form name="frm">
+        <b
+          ><font color="red"
+            ><input type="text" name="textname" size="40" id="cntdwn" />
+            <input type="text" name="time" size="5" id="cntdwn" /></font
+        ></b>
+      </form>
+    </blockquote>
+  </body>
+</html>
