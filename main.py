@@ -57,7 +57,7 @@ def my_tplink():
 
 def parent_tplink():
     username="admin"
-    password="password"
+    password="admin"
     router=Tplink_Archer_C20(gateway="192.168.0.1",username="admin",password="admin")
     
     #headlessmode
