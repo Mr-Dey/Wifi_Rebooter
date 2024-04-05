@@ -138,10 +138,17 @@ def digisol():
 if __name__=="__main__":
     func ={'0':my_tplink,'1':parent_tplink,'2':digisol}
     userInp=input("""
-                  enter '0' for home
-                  enter '1' for home_parent
-                  enter '2' for office
+                  enter '0' for child_archer
+                  enter '1' for parent_archer
+                  enter '2' for ded_sec(soul)
                   =>
                   """)
-    func[userInp]()
+    import time
+    if userInp=="2":
+        while True:
+            func[userInp]()
+            print("time to sleep..")
+            time.sleep(120)
+    else:
+        func[userInp]()
 
